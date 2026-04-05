@@ -55,8 +55,12 @@ JWT-based, cookie-stored sessions via `jose`. `src/lib/auth.ts` is server-only. 
 
 ### Persistence
 
-Authenticated users' projects are stored in SQLite via Prisma. The project record holds serialized `messages` (JSON) and `data` (serialized VFS). Schema is at `prisma/schema.prisma`.
+Authenticated users' projects are stored in SQLite via Prisma. See `prisma/schema.prisma` for the full data model — reference it whenever you need to understand the structure of data stored in the database. The `Project` record holds serialized `messages` (JSON string) and `data` (serialized VFS as JSON string). `userId` is optional to allow anonymous project creation.
 
 ### Testing
 
 Tests use Vitest + jsdom + React Testing Library. Config is `vitest.config.mts`. Test files live next to their subjects in `__tests__` subdirectories.
+
+## Code style
+
+- Only comment code that is genuinely complex or non-obvious. Skip comments on self-explanatory logic.
